@@ -14,4 +14,6 @@ module NonlinearPDE
     export PDE_solver
     include("extend_solution.jl")
     export construct_inpTheta, extend_solution, get_extended_solution
+    include("error_calculation.jl")
+    export solution_error
 end
