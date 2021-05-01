@@ -28,8 +28,8 @@ function get_extended_solution(num_pts, X_domain, X_boundary, L, sol, set_sigma)
     xx = x' .* ones(num_pts)
     yy = ones(num_pts)' .* y
     
-    xxv = Matrix{float64}(reshape(xx,(num_pts^2,1)))
-    yyv = Matrix{float64}(reshape(yy,(num_pts^2,1)))
+    xxv = Matrix{Float64}(reshape(xx,(num_pts^2,1)))
+    yyv = Matrix{Float64}(reshape(yy,(num_pts^2,1)))
 
     X_test = hcat(xxv,yyv)
 
@@ -47,6 +47,6 @@ function get_extended_solution(num_pts, X_domain, X_boundary, L, sol, set_sigma)
 
 #     X_test=hcat([[x[i];y[j]] for i = 1 : num_pts for j = 1 : num_pts])
     temp_vec = [alpha*sol.^m-rhs_f; sol; bdy_g]
-    u_extended = Matrix{float64}(reshape(extend_solution(X_test, X_domain, X_boundary, L, temp_vec, set_sigma),(num_pts,num_pts)))
+    u_extended = Matrix{Float64}(reshape(extend_solution(X_test, X_domain, X_boundary, L, temp_vec, set_sigma),(num_pts,num_pts)))
     return x, y, u_extended
 end
